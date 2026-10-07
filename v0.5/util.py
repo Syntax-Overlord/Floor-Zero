@@ -13,8 +13,9 @@ class Item:
                 "description", "No description available."
             )
             self.category: str = idData.get("category", "consumable")
-            if idData.get("durability") > -1 and idData.get("durability") != None:
-                self.durability: int = idData.get("durability")
+            durability = idData.get("durability")
+            if isinstance(durability, int) and durability > -1:
+                self.durability: int = durability
             else:
                 self.durability: int = 0
             self.attack: int = idData.get("attack", 0)
@@ -150,7 +151,7 @@ class Inventory:
             }
             return self.inventory
         else:
-            self.createInventory()
+            self.create()
             return self.inventory
 
     def __repr__(self) -> str:
