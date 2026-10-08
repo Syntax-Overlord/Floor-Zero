@@ -5,10 +5,17 @@ print("This game is a text-based adventure game that mimics Fantasy adventure st
 print("Made by Laksh Chawla")
 name = str(input("Let's start with your name: "))
 family_name = str(input("What is your family name? "))
-gender = str(input("Choose Your Gender: Male/Female: "))
-job = str(input("Choose a job: Warrior/Mage/Rogue/Cleric/Archer: "))
+gender = str(input("Choose Your Gender: Male/Female: ")).strip().title()
+job_input = str(input("Choose a job (W)arrior/(M)age/(R)ogue/(C)leric/(A)rcher: ")).strip().lower()
+job = {
+    "w": "Warrior",
+    "m": "Mage",
+    "r": "Rogue",
+    "c": "Cleric",
+    "a": "Archer",
+}.get(job_input, job_input.title())
 status = 1 #Alive = 1
-stats = str(input("Would you like to decide your character's stats yourself? Yes/No: "))
+stats = str(input("Would you like to decide your character's stats yourself? Yes/No: ")).strip().lower()
 strength = 0
 dexterity = 0
 constitution = 0
@@ -17,7 +24,7 @@ wisdom = 0
 charisma = 0
 if stats == "Yes" or stats == "yes" or stats == "Y" or stats == "y":
     if gender == "Male" or gender == "M" or gender == "m":
-        if job == "Warrior":
+        if job_input in ("w", "warrior"):
             print("Choose your stats:")
             strength = int(input("Strength(Physical Strength)(1-10):"))
             if strength >= 10:
@@ -37,7 +44,7 @@ if stats == "Yes" or stats == "yes" or stats == "Y" or stats == "y":
             charisma = int(input("Charisma(Social skills and personality)(1-5):"))
             if charisma > 5:
                 print("Please choose a value below 6 for Charisma!")
-        if job == "Mage":
+        if job_input in ("m", "mage"):
             print("Choose your stats:")
             strength = int(input("Strength(Physical Strength)(1-5):"))
             if strength > 5:
@@ -57,7 +64,7 @@ if stats == "Yes" or stats == "yes" or stats == "Y" or stats == "y":
             charisma = int(input("Charisma(Social skills and personality)(1-5):"))
             if charisma > 5:
                 print("Please choose a value below 6 for Charisma!")
-        if job == "Rogue":
+        if job_input in ("r", "rogue"):
             print("Choose your stats:")
             strength = int(input("Strength(Physical Strength)(1-5):"))
             if strength > 5:
@@ -77,7 +84,7 @@ if stats == "Yes" or stats == "yes" or stats == "Y" or stats == "y":
             charisma = int(input("Charisma(Social skills and personality)(1-10):"))
             if charisma >= 10:
                 print("Please choose a value below 10 for Charisma!")
-        if job == "Cleric":
+        if job_input in ("c", "cleric"):
             print("Choose your stats:")
             strength = int(input("Strength(Physical Strength)(1-5):"))
             if strength > 5:
@@ -97,7 +104,7 @@ if stats == "Yes" or stats == "yes" or stats == "Y" or stats == "y":
             charisma = int(input("Charisma(Social skills and personality)(1-10):"))
             if charisma >= 10:
                 print("Please choose a value below 10 for Charisma!")
-        if job == "Archer":
+        if job_input in ("a", "archer"):
             print("Choose your stats:")
             strength = int(input("Strength(Physical Strength)(1-5):"))
             if strength > 5:
@@ -118,7 +125,7 @@ if stats == "Yes" or stats == "yes" or stats == "Y" or stats == "y":
             if charisma > 5:
                 print("Please choose a value below 6 for Charisma!")
     elif gender == "Female" or gender == "F" or gender == "f":
-        if job == "Warrior":
+        if job_input in ("w", "warrior"):
             print("Choose your stats:")
             strength = int(input("Strength(Physical Strength)(1-10):"))
             if strength >= 10:
@@ -138,7 +145,7 @@ if stats == "Yes" or stats == "yes" or stats == "Y" or stats == "y":
             charisma = int(input("Charisma(Social skills and personality)(1-5):"))
             if charisma > 5:
                 print("Please choose a value below 6 for Charisma!")
-        if job == "Mage":
+        if job_input in ("m", "mage"):
             print("Choose your stats:")
             strength = int(input("Strength(Physical Strength)(1-5):"))
             if strength > 5:
@@ -158,7 +165,7 @@ if stats == "Yes" or stats == "yes" or stats == "Y" or stats == "y":
             charisma = int(input("Charisma(Social skills and personality)(1-5):"))
             if charisma > 5:
                 print("Please choose a value below 6 for Charisma!")
-        if job == "Rogue":
+        if job_input in ("r", "rogue"):
             print("Choose your stats:")
             strength = int(input("Strength(Physical Strength)(1-5):"))
             if strength > 5:
@@ -178,7 +185,7 @@ if stats == "Yes" or stats == "yes" or stats == "Y" or stats == "y":
             charisma = int(input("Charisma(Social skills and personality)(1-10):"))
             if charisma >= 10:
                 print("Please choose a value below 10 for Charisma!")
-        if job == "Cleric":
+        if job_input in ("c", "cleric"):
             print("Choose your stats:")
             strength = int(input("Strength(Physical Strength)(1-5):"))
             if strength > 5:
@@ -198,7 +205,7 @@ if stats == "Yes" or stats == "yes" or stats == "Y" or stats == "y":
             charisma = int(input("Charisma(Social skills and personality)(1-10):"))
             if charisma >= 10:
                 print("Please choose a value below 10 for Charisma!")
-        if job == "Archer":
+        if job_input in ("a", "archer"):
             print("Choose your stats:")
             strength = int(input("Strength(Physical Strength)(1-5):"))
             if strength > 5:
@@ -220,35 +227,35 @@ if stats == "Yes" or stats == "yes" or stats == "Y" or stats == "y":
                 print("Please choose a value below 6 for Charisma!")
 elif stats == "No" or stats == "no" or stats == "N" or stats == "n":
     if gender == "Male" or gender == "M" or gender == "m":
-        if job == "Warrior":
+        if job_input in ("w", "warrior"):
             strength = random.randint(1, 9)
             dexterity = random.randint(1, 5)
             constitution = random.randint(1, 9)
             intelligence = random.randint(1, 5)
             wisdom = random.randint(1, 5)
             charisma = random.randint(1, 5)
-        elif job == "Mage":
+        elif job_input in ("m", "mage"):
             strength = random.randint(1, 5)
             dexterity = random.randint(1, 5)
             constitution = random.randint(1, 5)
             intelligence = random.randint(1, 9)
             wisdom = random.randint(1, 9)
             charisma = random.randint(1, 5)
-        elif job == "Rogue":
+        elif job_input in ("r", "rogue"):
             strength = random.randint(1, 5)
             dexterity = random.randint(1, 9)
             constitution = random.randint(1, 5)
             intelligence = random.randint(1, 9)
             wisdom = random.randint(1, 5)
             charisma = random.randint(1, 9)
-        elif job == "Cleric":
+        elif job_input in ("c", "cleric"):
             strength = random.randint(1, 5)
             dexterity = random.randint(1, 5)
             constitution = random.randint(1, 5)
             intelligence = random.randint(1, 9)
             wisdom = random.randint(1, 9)
             charisma = random.randint(1, 9)
-        elif job == "Archer":
+        elif job_input in ("a", "archer"):
             strength = random.randint(1, 5)
             dexterity = random.randint(1, 9)
             constitution = random.randint(1, 5)
@@ -256,35 +263,35 @@ elif stats == "No" or stats == "no" or stats == "N" or stats == "n":
             wisdom = random.randint(1, 5)
             charisma = random.randint(1, 5)
     elif gender == "Female" or gender == "F" or gender == "f":
-        if job == "Warrior":
+        if job_input in ("w", "warrior"):
             strength = random.randint(1, 9)
             dexterity = random.randint(1, 5)
             constitution = random.randint(1, 9)
             intelligence = random.randint(1, 5)
             wisdom = random.randint(1, 5)
             charisma = random.randint(1, 5)
-        elif job == "Mage":
+        elif job_input in ("m", "mage"):
             strength = random.randint(1, 5)
             dexterity = random.randint(1, 5)
             constitution = random.randint(1, 5)
             intelligence = random.randint(1, 9)
             wisdom = random.randint(1, 9)
             charisma = random.randint(1, 5)
-        elif job == "Rogue":
+        elif job_input in ("r", "rogue"):
             strength = random.randint(1, 5)
             dexterity = random.randint(1, 9)
             constitution = random.randint(1, 5)
             intelligence = random.randint(1, 9)
             wisdom = random.randint(1, 5)
             charisma = random.randint(1, 9)
-        elif job == "Cleric":
+        elif job_input in ("c", "cleric"):
             strength = random.randint(1, 5)
             dexterity = random.randint(1, 5)
             constitution = random.randint(1, 5)
             intelligence = random.randint(1, 9)
             wisdom = random.randint(1, 9)
             charisma = random.randint(1, 9)
-        elif job == "Archer":
+        elif job_input in ("a", "archer"):
             strength = random.randint(1, 5)
             dexterity = random.randint(1, 9)
             constitution = random.randint(1, 5)
